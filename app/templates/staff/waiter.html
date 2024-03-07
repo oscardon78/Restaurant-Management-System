@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--=============== Favicon ===============-->
+    <link
+      rel="shortcut icon"
+      href="{{url_for('static', filename='images/favicon-32x32.png')}}"
+      type="image/png"
+    />
+    <!--=============== Swiper CSS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <!--=============== Boxicons ===============-->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Waiter Dashboard</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+  />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/staff_style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body class="">
+    <!--=============== Header ===============-->
+    <header class="header">
+        <nav class="navbar ">
+            <div class=" container">
+            <a href="" class="">
+
+                <h1>Afro<span style="font-weight: 700; color: #F94A3D;">Bites</span></h1>
+            </a>
+    
+            <!-- <ul class="nav-list d-flex">
+                <a href="#search-your-order">Order</a>
+            </ul> -->
+    
+            <div class="col d-flex" style="margin-left: 10rem;">
+                <a href="/logout" class="btn signin">Logout</a>
+            </div>
+    
+        </nav>
+
+        <!--=============== Home ===============-->
+        <div class="home">
+            <div class="container" style="margin-top: 10rem;"> 
+                    <h2 style="text-align: center;">Waiter Dashboard</h2>
+        
+
+    {% for order in orders %}
+    {{ order.items }}
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row justify-content-between">
+                <div class="col-sm-6">
+                    <h2>Order ID: {{ order.order_id }}</h2>
+                    <h3>Table Number: {{ order.table_number }} - Total Amount: ${{ '%.2f'|format(order.total_amount) }}</h3>
+                </div>
+                <div class="col-sm-6 d-flex justify-content-end" style="margin-left: 20rem;">
+                    <a href="" class="btn mr-3 btn-secondary" id="" data-category-id="" onclick="setCategoryId(this);"><span>Route to Kitchen</span></a>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-stripped table-hover">
+            <thead>
+                <tr>
+                    <th>Food Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order.items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>${{ '%.2f'|format(item.price) }}</td>
+                    <td>${{ '%.2f'|format(item.subtotal) }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" class="text-center">No food items in this order</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <p>No orders found</p>
+{% endfor %}
+
+          <!-- Inventory Table
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row justify-content-between">
+                        <div class="col-sm-6">
+                            <h2>Order ID</h2>
+                            <h3>Table Number - Total Amount</h3>
+                        </div>
+                        <div class="col-sm-6 d-flex justify-content-end" style="margin-left: 20rem;">
+                            <a
+                                href="" class="btn mr-3 btn-secondary" id="" data-category-id="" onclick="setCategoryId(this);"><span>Route to Kitchen</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-stripped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Food Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                      </tr>
+                      <tr>
+                        <td colspan="6" class="text-center">No food items in this category</td>
+                      </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+ -->
+
+
+
+            </div>
+        </div>
+      </header>
+
+        <div class="footer-bottom">
+        <div class="row container d-flex">
+            <p>Copyright © 2023 Afrobites</p>
+            <p>Created by Brain Squad</p>
+        </div>
+        </div>
+      
+
+
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--=============== Favicon ===============-->
+    <link
+      rel="shortcut icon"
+      href="./static/images/favicon-32x32.png"
+      type="image/png"
+    />
+    <!--=============== Swiper CSS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <!--=============== Boxicons ===============-->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body class="">
+    <!--=============== Header ===============-->
+    <header class="header">
+        <nav class="navbar">
+            <div class="row d-flex container">
+            <a href="" class="logo d-flex">
+                <h1>Afro<span style="font-weight: 700; color: #F94A3D;">Bites</span></h1>
+            </a>
+        
+
+            <ul class="nav-list d-flex">
+                <a href="./">Home</a>
+                <a href="{{url_for('home')}}#services">About</a>
+                <a href="{{url_for('food_ordering')}}">Menu</a>
+                <a href="{{url_for('home')}}#testimonials">Reviews</a>
+                <a href="{{url_for('home')}}#contact">Contact</a>
+                <a href="{{url_for('food_ordering')}}#search-your-order">Search Order</a>
+                <span class="close d-flex"><i class="bx bx-x"></i></span>
+            </ul>
+            
+            <div class="col d-flex">
+                <div class="icon-cart cart-icon d-flex">
+                    <i class="bx bx-shopping-bag"></i>
+                    <span>0</span>
+                </div>
+                <a class="btn signin">Patron Sign In</a>
+            </div>
+            
+            <!-- Hamburger -->
+            <div class="hamburger d-flex">
+                <i class="bx bx-menu"></i>
+            </div>
+        </div>
+    </nav>
+    
+    
+    <!--=============== SignIn Form ===============-->
+    <div class="wrapper">
+        <form action="" class="form">
+            <h2>PATRON SIGN IN</h2>
+            
+            <div class="control">
+                <!-- <label for="">Enter Email:</label> -->
+                <input type="email" placeholder="Email" />
+            </div>
+            <div class="control">
+                <!-- <label for="">Password:</label> -->
+                <input type="password" placeholder="Password" />
+            </div>
+            <div class="checkbox d-flex">
+                <input type="checkbox" />
+                <span>Remember Me</span>
+            </div>
+            <button class="btn">Sign In</button>
+        </form>
+        
+        <div class="close-form">
+            <i class="bx bx-x"></i>
+        </div>
+    </div>
+</div>
+
+
+<!-- ========================Checkout=============================== -->
+<div class="container4" id="checkoutPage">
+    <div class="text-center">
+        <h1>Checkout</h1>
+        <p class="lead">Please fill in the information below to complete your order.</p>
+    </div>
+
+    <form class="needs-validation" method="post" action="/checkout-payment">
+        <div class="form-row">
+
+            <div class="form-column-left">
+
+                <h2 style="margin-top: 30px;" class="section-heading">Have Reservation or Registered Patron?</h2>
+                <input type="text" class="form-input" name="emailOrId" id="emailOrId" placeholder="Email address or Reservation ID">
+                <select class="form-select" name="tableNumber" id="tableNumber">
+                    <option value="">Select table number</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+
+
+                <h2 style="margin-top: 30px;" class="section-heading">Not Registered or Without Reservation</h2>
+                <div class="form-sub-row">
+                    <input type="text" class="form-input-half" name="firstName" id="firstName" placeholder="First name">
+                    <input type="text" class="form-input-half" name="lastName" id="lastName" placeholder="Last name">
+                </div>
+
+                <div class="form-sub-row">
+                    <input type="tel" class="form-input-half" name="phoneNumber" id="phoneNumber" placeholder="Phone number">
+                    <input type="email" class="form-input-half" name="emailAddress" id="emailAddress" placeholder="Email">        
+                </div>
+
+                <textarea class="form-textarea" name="address" id="address" placeholder="Address"></textarea>
+                <select class="form-select" name="tableNumber2" id="tableNumber2">
+                    <option value="">Select table number</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+            </div>
+
+            <div class="form-column-right">
+                <h2 style="margin-top: 30px;" class="section-heading">Bill</h2>
+                <ul class="bill-list">
+                    <li class="bill-item item-total">
+                        <div class="item-name">Item Total</div>
+                        <span class="item-cost">$0.00</span>
+                    </li>
+                    <li class="bill-item taxes">
+                        <div class="item-name">Taxes</div>
+                        <span class="item-cost">$0.00</span>
+                    </li>
+                    <li class="bill-total">
+                        <h5>Total (USD)</h5>
+                        <strong>$0.00</strong>
+                    </li>
+                </ul>
+
+                <h2 style="margin-top: 30px;" class="section-heading">Payment</h2>
+
+                <input type="text" class="form-input" name="ccName" id="cc-name" placeholder="Name on card">
+                <input type="text" class="form-input" name="ccNumber" id="cc-number" placeholder="Credit card number">
+                <input type="text" class="form-input" name="ccExpiration" id="cc-expiration" placeholder="Expiration (MM/YY)">
+                <input type="text" class="form-input" name="ccCvv" id="cc-cvv" placeholder="CVV">
+                <input type="hidden" name="totalAmount" id="totalAmount">
+                <button class="form-button checkout-form" type="submit">Complete Payment</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+</header>
+
+
+
+
+
+
+
+    <!--=============== Footer ===============-->
+    <footer class="footer ft-border" id="contact">
+        <div class="row container">
+            <div class="col">
+            <div class="logo d-flex">
+    
+                <h1>Afro<span style="font-weight: 700; color: #F94A3D;">Bites</span></h1>
+            </div>
+            <p>
+                All transaction that occurs on Afrobites is 100% protected by SSL certificates and encrypted protocols. 
+                Our customer’s safety is our number one priority, so you can rest assured and eat well.
+            </p>
+            <div class="icons d-flex">
+                <div class="icon d-flex">
+                <i class="bx bxl-facebook"></i>
+                </div>
+                <div class="icon d-flex"><i class="bx bxl-twitter"></i></div>
+                <div class="icon d-flex"><i class="bx bxl-linkedin"></i></div>
+            </div>
+            </div>
+            <div class="col">
+            <div>
+                <h4>Company</h4>
+                <a href="#about">About Us</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#order">All Products</a>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <a href="">FAQ</a>
+                <a href="">Privacy Policy </a>
+                <a href="">Terms & Conditions</a>
+                <a href="{{url_for('employee_login')}}" target="_blank">Employee Login</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <a href="">WhatsApp</a>
+                <a href="">24/7 Support</a>
+            </div>
+            </div>
+        </div>
+        </footer>
+        <div class="footer-bottom">
+        <div class="row container d-flex">
+            <p>Copyright © 2023 Afrobites</p>
+            <p>Created by Brain Squad</p>
+        </div>
+        </div>
+    
+
+        <!--=============== Pop up modal ===============-->
+        <div class="pop-up">
+
+            <div class="wrapper2 {{ modal }}">
+                <div class="form">
+                    <h2>Order Unsuccessful</h2>
+                    
+                    <div class="control">
+                        <p>{{ message }}</p>
+                    </div>
+
+                    <button class="btn close-mod">Continue</button>
+                    <!-- <a href="" class="btn" style="display: flex; ">Continue</a> -->
+                </div>
+                
+                <div class="close-form1">
+                    <i class="bx bx-x"></i>
+                </div>
+            </div>
+        </div>
+  
+
+    <div class="listProduct" style="display: none;"></div>
+
+<!-- ============= Cart Tab ================= -->
+    <div class="cartTab">
+        <h1>Shopping Cart</h1>
+        <div class="listCart">
+            
+        </div>
+        <div class="btn1">
+            <button class="close1">CLOSE</button>
+            <!-- <button class="checkOut">Check Out</button> -->
+            <a href="{{ url_for('checkout') }}" class="checkOut">CHECKOUT</a>
+        </div>
+    </div>
+
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var reservationInputs = document.querySelectorAll('#emailOrId, #tableNumber');
+        var nonReservationInputs = document.querySelectorAll('#firstName, #lastName, #phoneNumber, #emailAddress, #address, #tableNumber2');
+
+        reservationInputs.forEach(function(input) {
+            input.addEventListener('input', function() {
+                if (this.value.length > 0) {
+                    disableInputs(nonReservationInputs, true);
+                } else {
+                    var allEmpty = Array.from(reservationInputs).every(i => i.value.length === 0);
+                    if (allEmpty) {
+                        disableInputs(nonReservationInputs, false);
+                    }
+                }
+            });
+        });
+
+        nonReservationInputs.forEach(function(input) {
+            input.addEventListener('input', function() {
+                if (this.value.length > 0) {
+                    disableInputs(reservationInputs, true);
+                } else {
+                    var allEmpty = Array.from(nonReservationInputs).every(i => i.value.length === 0);
+                    if (allEmpty) {
+                        disableInputs(reservationInputs, false);
+                    }
+                }
+            });
+        });
+
+        function disableInputs(inputs, disable) {
+            inputs.forEach(function(input) {
+                input.disabled = disable;
+                if (disable) {
+                    input.classList.add('greyed-out');
+                } else {
+                    input.classList.remove('greyed-out');
+                }
+            });
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+    var form = document.querySelector(".needs-validation");
+    form.addEventListener("submit", function() {
+        var totalAmount = document.querySelector(".bill-total strong").textContent;
+        document.getElementById("totalAmount").value = totalAmount;
+    });
+});
+
+
+    </script>
+
+</body>
+</html>

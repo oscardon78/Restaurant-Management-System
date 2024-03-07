@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--=============== Favicon ===============-->
+    <link
+      rel="shortcut icon"
+      href="{{url_for('static', filename='images/favicon-32x32.png')}}"
+      type="image/png"
+    />
+    <!--=============== Swiper CSS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <!--=============== Boxicons ===============-->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Food Ordering</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body class="">
+    <!--=============== Header ===============-->
+    <header class="header">
+        <nav class="navbar">
+            <div class="row d-flex container">
+            <a href="" class="logo d-flex">
+
+                <h1>Afro<span style="font-weight: 700; color: #F94A3D;">Bites</span></h1>
+            </a>
+    
+            <ul class="nav-list d-flex">
+                <a href="./">Home</a>
+                <a href="{{url_for('home')}}#services">About</a>
+                <a href="{{url_for('food_ordering')}}">Menu</a>
+                <a href="{{url_for('home')}}#testimonials">Reviews</a>
+                <a href="{{url_for('home')}}#contact">Contact</a>
+                <a href="#search-your-order">Search Order</a>
+                <span class="close d-flex"><i class="bx bx-x"></i></span>
+            </ul>
+    
+            <div class="col d-flex">
+                <div class="icon-cart cart-icon d-flex">
+                <i class="bx bx-shopping-bag"></i>
+                <span>0</span>
+                </div>
+                <a class="btn signin">Patron Sign In</a>
+            </div>
+    
+            <!-- Hamburger -->
+            <div class="hamburger d-flex">
+                <i class="bx bx-menu"></i>
+            </div>
+            </div>
+        </nav>
+
+        <div class="listProduct container" style="padding: 80px 0 150px;">
+            
+        </div>
+        
+        
+        <!--=============== SignIn Form ===============-->
+        <div class="wrapper">
+            <form action="" class="form">
+            <h2>PATRON SIGN IN</h2>
+
+            <div class="control">
+                <!-- <label for="">Enter Email:</label> -->
+                <input type="email" placeholder="Email" />
+            </div>
+            <div class="control">
+                <!-- <label for="">Password:</label> -->
+                <input type="password" placeholder="Password" />
+            </div>
+            <div class="checkbox d-flex">
+                <input type="checkbox" />
+                <span>Remember Me</span>
+            </div>
+            <button class="btn">Sign In</button>
+            </form>
+
+            <div class="close-form">
+            <i class="bx bx-x"></i>
+            </div>
+        </div>
+        </div>
+        </header>
+
+    <!-- ============ Search for order status ============ -->
+    <section class="search-status" id="search-your-order">
+        <div class="container">
+            <div class="search">
+                <h1>Search for your order status</h1>
+                <form action="/search-order" method="post">
+                    <input type="text" name="orderNumber" placeholder="Enter your order number">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+        {% if show_results %}
+            <div id="orderResults" class="container4">
+                <table>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Creation Date</th>
+                        <th>Total Amount</th>
+                        <th>Order Status</th>
+                    </tr>
+                    <tr>
+                        <td>{{ order.OrderID }}</td>
+                        <td>{{ order.OrderCreationDate.strftime('%Y-%m-%d %H:%M') }}</td>
+                        <td>${{ order.TotalAmount }}</td>
+                        <td>{{ order.OrderStatus }}</td>
+                    </tr>
+                </table>
+            </div>
+        {% endif %}
+    </section>
+
+    <!--=============== Footer ===============-->
+    <footer class="footer" id="contact">
+        <div class="row container">
+            <div class="col">
+            <div class="logo d-flex">
+    
+                <h1>Afro<span style="font-weight: 700; color: #F94A3D;">Bites</span></h1>
+            </div>
+            <p>
+                All transaction that occurs on Afrobites is 100% protected by SSL certificates and encrypted protocols. 
+                Our customer’s safety is our number one priority, so you can rest assured and eat well.
+            </p>
+            <div class="icons d-flex">
+                <div class="icon d-flex">
+                <i class="bx bxl-facebook"></i>
+                </div>
+                <div class="icon d-flex"><i class="bx bxl-twitter"></i></div>
+                <div class="icon d-flex"><i class="bx bxl-linkedin"></i></div>
+            </div>
+            </div>
+            <div class="col">
+            <div>
+                <h4>Company</h4>
+                <a href="#about">About Us</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#order">All Products</a>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <a href="">FAQ</a>
+                <a href="">Privacy Policy </a>
+                <a href="">Terms & Conditions</a>
+                <a href="{{url_for('employee_login')}}" target="_blank">Employee Login</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <a href="">WhatsApp</a>
+                <a href="">24/7 Support</a>
+            </div>
+            </div>
+        </div>
+        </footer>
+        <div class="footer-bottom">
+        <div class="row container d-flex">
+            <p>Copyright © 2023 Afrobites</p>
+            <p>Created by Brain Squad</p>
+        </div>
+        </div>
+      
+
+     
+
+<!-- ============= Cart Tab ================= -->
+    <div class="cartTab">
+        <h1>Shopping Cart</h1>
+        <div class="listCart">
+            
+        </div>
+        <div class="btn1">
+            <button class="close1">CLOSE</button>
+            <!-- <button class="checkOut">Check Out</button> -->
+            <a href="{{ url_for('checkout') }}" class="checkOut">CHECKOUT</a>
+        </div>
+    </div>
+
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+
+    {% if show_results %}
+    <script>
+        window.onload = function() {
+                document.getElementById('search-your-order').scrollIntoView();
+            };
+    </script>
+    {% endif %}
+
+</body>
+</html>

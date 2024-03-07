@@ -1,0 +1,59 @@
+[
+    {
+        "id": 1,
+        "name":" LD01 LOUNGE CHAIR",
+        "price": 200,
+        "image": "./static/images/1.png",
+        "description": "Lorem ipsum et vidi al tolo solo"
+    },
+    {
+        "id": 2,
+        "name":" LD02 LOUNGE CHAIR",
+        "price": 250,
+        "image": "./static/images/2.png",
+        "description": "Lorem ipsum et vidi al tolo solo"
+    },
+    {
+        "id": 3,
+        "name":" LD03 LOUNGE CHAIR",
+        "price": 290,
+        "image": "./static/images/3.png",
+        "description": "Lorem ipsum et vidi al tolo solo"
+    },
+    {
+        "id": 4,
+        "name":" LD04 LOUNGE CHAIR",
+        "price": 200,
+        "image": "./static/images/4.png",
+        "description": "Lorem ipsum et vidi al tolo solo"
+    },
+    {
+        "id": 5,
+        "name":" LD05 LOUNGE CHAIR",
+        "price": 300,
+        "image": "./static/images/5.png",
+        "description": "Lorem ipsum et vidi al tolo solo"
+    },
+    {
+        "id": 6,
+        "name":" LD06 LOUNGE CHAIR",
+        "price": 200,
+        "image": "./static/images/6.png",
+        "description": "Lorem ipsum et vidi al tolo solo"
+    },
+    {
+        "id": 7,
+        "name":" LD07 LOUNGE CHAIR",
+        "price": 200,
+        "image": "./static/images/7.png",
+        "description": "Lorem ipsum et vidi al tolo solo"
+    },
+    {
+        "id": 8,
+        "name":" LD08 LOUNGE CHAIR",
+        "price": 200,
+        "image": "./static/images/8.png",
+        "description": "Lorem ipsum et vidi al tolo solo"
+    }
+
+]
